@@ -1,22 +1,27 @@
 import React from 'react';
 import './WidgetItem.css';
-import Widget from '../types/widgets/Widget';
+import Widget, { WidgetType } from '../types/widgets/Widget';
 import WidgetItemControls from './WidgetItemControls';
 import { useActions } from '../hooks/useActions';
 import WidgetTypeWeather from './widget_type/WidgetTypeWeather';
 import Weather from '../types/widgets/Weather';
+import WidgetTypeGenerator from './widget_type/WidgetTypeGenerator';
 
 interface WidgetProps {
-    widget: Widget | Weather;
+    widget: Widget;
 }
 
 const WidgetItem: React.FC<WidgetProps> = ({widget}) => {
 
     const {setCurrentWidget} = useActions()
 
+    const widgets = new Map([
+        [WidgetType.WEATHER, <WidgetTypeWeather city={(widget as Weather).city} />],
+        [WidgetType.GENERATOR, <WidgetTypeGenerator widget={widget} />]
+      ]);
+
     function dragStartHandler(e: React.DragEvent<HTMLDivElement>): void {
         setCurrentWidget(widget)
-        console.log(widget)
     }
 
     return (
@@ -26,7 +31,7 @@ const WidgetItem: React.FC<WidgetProps> = ({widget}) => {
             draggable
             onDragStart={(e) => dragStartHandler(e)}
         >
-            <WidgetTypeWeather city={(widget as Weather).city} widget={(widget as Weather)} />
+            {widgets.get(widget.type)}
             <WidgetItemControls widget={widget} />
         </div>
     );

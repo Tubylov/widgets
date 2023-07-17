@@ -1,14 +1,14 @@
 import React from 'react';
 import ControlPanel from './components/ControlPanel';
 import WidgetKitPanel from './components/WidgetKitPanel';
-import WidgetSettingWeather from './components/widget_type/WidgetSettingWeather';
+import WidgetSetting from './components/widget_type/WidgetSetting';
 import ModalBox from './components/ModalBox';
 import './App.css';
 import { useTypedSelector } from './hooks/useTypedSelector';
 
 const App = () => {
 
-  const {isModalBox} = useTypedSelector(state => state.widgetSettingsWeather)
+  const {isModalBox, widget} = useTypedSelector(state => state.widgetSettings)
 
   return (
     <div className="App">
@@ -17,7 +17,7 @@ const App = () => {
       {
         isModalBox ?
         <ModalBox>
-          <WidgetSettingWeather />
+          <WidgetSetting widgetItem={widget} />
         </ModalBox>
         :
           null

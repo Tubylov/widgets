@@ -1,11 +1,10 @@
 import * as WidgetListActionCreators from './widget'
 import * as WidgetMoveActionCreators from './widgetMove'
-import * as WidgetWeatherActionCreators from './widgetWeather'
-import * as WidgetSettingsWeatherActionCreators from './widgetSettingsWeather'
+import * as WidgetSettingsActionCreators from './widgetSettings'
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     ...WidgetListActionCreators,
     ...WidgetMoveActionCreators,
-    ...WidgetWeatherActionCreators,
-    ...WidgetSettingsWeatherActionCreators
+    ...WidgetSettingsActionCreators
 }

@@ -1,22 +1,23 @@
 import React from 'react';
 import './WidgetTypesList.css';
-import Widget from '../types/widgets/Widget';
 import { useActions } from '../hooks/useActions';
 import uuid from 'react-uuid';
 import Weather from '../types/widgets/Weather';
+import { WidgetType, WidgetName } from '../types/widgets/Widget';
+import Generator, { TypeGenerator } from '../types/widgets/Generator';
 
 const WidgetTypesList: React.FC = () => {
 
     const {addWidget} = useActions()
     
-    const addWidgetItem = (): void => {
-        addWidget(new Weather(uuid(), 'Погода', 1, 'Ижевск'))
-    }
-    
     return (
         <div className="WidgetTypesList">
-            <button onClick={addWidgetItem}>Погода</button>
-            <button>Курс валют</button>
+            <button className="WidgetTypesList_button" onClick={
+                () => addWidget(new Weather(uuid(), WidgetName.WEATHER, 1, 'Ижевск', WidgetType.WEATHER))
+                }>Погода</button>
+            <button className="WidgetTypesList_button" onClick={
+                () => addWidget(new Generator(uuid(), WidgetName.GENERATOR, 1, TypeGenerator.RANDOM_NUMBER, WidgetType.GENERATOR))
+                }>Генератор чисел</button>
         </div>
     );
 }

@@ -1,9 +1,21 @@
 .ControlPanel{
     width: 100%;
     height: 50px;
+    min-height: 50px;
     background-color: var(--basicColor);
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 0px 20px;
+}
+.ControlPanel__button{
+    padding: 10px;
+}
+@media only screen and (max-width: 650px) {
+    .ControlPanel{
+        height: auto;
+        flex-direction: column-reverse;
+        justify-content: space-evenly;
+        padding: 20px;
+    }
 }

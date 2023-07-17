@@ -13,10 +13,10 @@ const ControlPanel: React.FC = () => {
                 isWidgetTypesList ?
                     <>
                         <WidgetTypesList />
-                        <button onClick={() => setIsWidgetTypesList(!isWidgetTypesList)}><Icons name='close' /></button>
+                        <button className="ControlPanel__button" onClick={() => setIsWidgetTypesList(!isWidgetTypesList)}><Icons name='close' /></button>
                     </>
                 :
-                    <button onClick={() => setIsWidgetTypesList(!isWidgetTypesList)}>+ Добавить виджет</button>
+                    <button className="ControlPanel__button" onClick={() => setIsWidgetTypesList(!isWidgetTypesList)}>+ Добавить виджет</button>
             }
         </div>
     );

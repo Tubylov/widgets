@@ -6,4 +6,11 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: flex-start;
+    text-align: center;
+}
+@media only screen and (max-width: 650px) {
+    .WidgetColumn{
+        padding: 0px;
+        margin: 0px;
+    }
 }

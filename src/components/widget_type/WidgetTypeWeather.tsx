@@ -1,30 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './WidgetTypeWeather.css';
-import { useActions } from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { config } from "../../config"
 import Icons from '../Icons'
-import Widget from '../../types/widgets/Widget';
-import Weather from '../../types/widgets/Weather';
+import axios from 'axios';
 
 interface WidgetTypeWeatherProps {
   city: string;
-  widget: Weather
 }
 
-const WidgetTypeWeather: React.FC<WidgetTypeWeatherProps> = ({city, widget}) => {
+const WidgetTypeWeather: React.FC<WidgetTypeWeatherProps> = ({city}) => {
 
-  let widgets: Widget[] = useTypedSelector(state => state.widgetList.widgets)
-  const {fetchWeather} = useActions()
-  const {widgetID, temperature, error, loading} = useTypedSelector(state => state.widgetWeather)
 
+  const[fetchWeather, setFetchWeather] = useState({temperature: 0, error: ''})
+  const[loading, setLoading] = useState(false)
+
+  
   useEffect(() => {
-    fetchWeather(city, widget.id)
-  }, [widgets])
+    const api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=ru&appid=${config.WeatherAPIKey}`
+    //fetchWeather(city, widget.id)
+    setLoading(true)
+    axios.get(api).then((response) => {
+      setFetchWeather({
+        temperature: Math.round(response.data.main.temp),
+        error: ''
+      })
+      setLoading(false)
+    }).catch((e) => setFetchWeather({temperature: 0, error: 'Ошибка загрузки'}))
 
-  if (error) {
+  }, [city])
+
+  if (fetchWeather.error) {
     return (
       <div className="WidgetTypeWeather">
-        <p className="WidgetTypeWeather__error">{error}</p>
+        <p className="WidgetTypeWeather__error">{fetchWeather.error}</p>
       </div>
     )
   }
@@ -36,7 +44,7 @@ const WidgetTypeWeather: React.FC<WidgetTypeWeatherProps> = ({city, widget}) => 
           <p className="WidgetTypeWeather__temperature"><Icons name='loader'/></p>
         :
           <>
-            <p className="WidgetTypeWeather__temperature">{temperature + '\u00b0'}C</p>
+            <p className="WidgetTypeWeather__temperature">{fetchWeather.temperature + '\u00b0'}C</p>
             <p className="WidgetTypeWeather__city">{city}</p>
           </>
       }

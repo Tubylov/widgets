@@ -2,24 +2,27 @@ import React from 'react';
 import './WidgetItemControls.css';
 import Icons from './Icons';
 import { useActions } from '../hooks/useActions';
-import Widget from '../types/widgets/Widget';
+import Widget, { WidgetType } from '../types/widgets/Widget';
 import Weather from '../types/widgets/Weather';
+import Generator from '../types/widgets/Generator';
 
 interface WidgetItemControlsProps {
-    widget: Widget | Weather
+    widget: Widget | Weather | Generator
 }
 
 const WidgetItemControls: React.FC<WidgetItemControlsProps> = ({widget}) => {
 
-    const {removeWidget, openSettingsWeather} = useActions()
+    const {removeWidget, openSettings} = useActions()
 
     const removeWidgetItem = (e: React.MouseEvent): void => {
         console.log(e.target)
         if((e.target as Element).className === 'WidgetItemControls__close'){
-            removeWidget(widget)
+            if(widget.type === WidgetType.WEATHER) removeWidget(widget as Weather)
+            if(widget.type === WidgetType.GENERATOR) removeWidget(widget as Generator)
         }
         if((e.target as Element).className === 'WidgetItemControls__settings'){
-            openSettingsWeather(widget as Weather)
+            if(widget.type === WidgetType.WEATHER) openSettings(widget as Weather)
+            if(widget.type === WidgetType.GENERATOR) openSettings(widget as Generator)
         }
     }
 
