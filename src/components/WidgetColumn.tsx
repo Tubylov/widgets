@@ -15,33 +15,31 @@ const WidgetColumn: React.FC<WidgetColumnProps> = ({number}) => {
 
     let widgets: Widget[] = useTypedSelector(state => state.widgetList.widgets)
     widgets = widgets.filter(item => item.columnNumber === number)
-    console.log(widgets)
 
     const currentWidget: Widget | null = useTypedSelector(state => state.widgetMove.widget)
 
-    function dragOverHandler(e: React.DragEvent<HTMLDivElement>): void {
+    function dragOverHandler(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void {
         e.preventDefault()
         if(e.currentTarget.className === 'WidgetColumn'){
             e.currentTarget.style.border = '3px solid #2ca58d'
         }
     }
 
-    function dragLeaveHandler(e: React.DragEvent<HTMLDivElement>): void {
+    function dragLeaveHandler(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void {
         e.currentTarget.style.border = 'none'
     }
 
-    function dragEndHandler(e: React.DragEvent<HTMLDivElement>): void {
+    function dragEndHandler(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void {
         e.currentTarget.style.border = 'none'
     }
 
-    function dropHandler(e: React.DragEvent<HTMLDivElement>): void {
+    function dropHandler(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void {
         e.preventDefault()
         e.currentTarget.style.border = 'none'
         if(currentWidget !== null){
             currentWidget.columnNumber = number
             updateWidget(currentWidget)
         }
-        console.log(number)
     }
 
     return (
@@ -52,6 +50,7 @@ const WidgetColumn: React.FC<WidgetColumnProps> = ({number}) => {
             onDragOver={(e) => dragOverHandler(e)}
             onDragLeave={(e) => dragLeaveHandler(e)}
             onDragEnd={(e) => dragEndHandler(e)}
+            onTouchEnd={(e) => dropHandler(e)}
             >
             {
                 widgets.length > 0 ?

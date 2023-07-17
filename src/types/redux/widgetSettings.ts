@@ -18,3 +18,9 @@ interface OpenSettingsAction {
 }
 
 export type SettingsAction = SetSettingsAction | OpenSettingsAction
+
+/*
+SettingsState - интерфейс для состояния работы с окном настроек виджета
+SettingsActionTypes - перечисление с типами action для работы с окном настроек виджета
+SetSettingsAction и OpenSettingsAction - интерфейсы типов action
+*/

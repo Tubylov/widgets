@@ -12,3 +12,9 @@ interface SetCurrentWidgetAction {
 }
 
 export type WidgetMoveAction = SetCurrentWidgetAction
+
+/*
+WidgetMoveState - интерфейс для состояния работы с перемещением виджетов
+WidgetMoveActionTypes - перечисление с типами action для работы с перемещением виджетов
+SetCurrentWidgetAction - интерфейс типа action
+*/

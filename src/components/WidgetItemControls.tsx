@@ -15,7 +15,6 @@ const WidgetItemControls: React.FC<WidgetItemControlsProps> = ({widget}) => {
     const {removeWidget, openSettings} = useActions()
 
     const removeWidgetItem = (e: React.MouseEvent): void => {
-        console.log(e.target)
         if((e.target as Element).className === 'WidgetItemControls__close'){
             if(widget.type === WidgetType.WEATHER) removeWidget(widget as Weather)
             if(widget.type === WidgetType.GENERATOR) removeWidget(widget as Generator)

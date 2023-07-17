@@ -22,3 +22,9 @@ interface UpdateWidgetListAction {
 }
 
 export type WidgetListAction = AddWidgetListAction | RemoveWidgetListAction | UpdateWidgetListAction
+
+/*
+WidgetListState - интерфейс для состояния работы с виджетами (создание, удаление, обновление)
+SettingsActionTypes - перечисление с типами action для работы работы с виджетами
+AddWidgetListAction, RemoveWidgetListAction, UpdateWidgetListAction - интерфейсы типов action
+*/

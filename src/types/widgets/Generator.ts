@@ -12,3 +12,7 @@ export enum TypeGenerator {
     RANDOM_NUMBER = "Случайные числа",
     UUID = "Генератор UUID"
 }
+
+/*
+class Generator - Наследник класса Widget для виджета Генератор с дополнительным полем Тип генератора
+*/

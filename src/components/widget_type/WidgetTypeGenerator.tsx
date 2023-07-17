@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './WidgetTypeGenerator.css';
-import Widget, { WidgetType } from '../../types/widgets/Widget';
+import Widget from '../../types/widgets/Widget';
 import Generator, { TypeGenerator } from '../../types/widgets/Generator';
 import uuid from 'react-uuid';
 

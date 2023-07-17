@@ -7,6 +7,7 @@
     justify-content: center;
     align-content: flex-start;
     text-align: center;
+    color: var(--basicColor);
 }
 @media only screen and (max-width: 650px) {
     .WidgetColumn{

@@ -3,3 +3,10 @@
     height: calc(100vh - 50px);
     display: flex;
 }
+@media only screen and (max-width: 650px) {
+    .WidgetKitPanel{
+        width: 100%;
+        height: auto;
+        display: flex;
+    }
+}
