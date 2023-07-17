@@ -1,0 +1,10 @@
+.WidgetItemControls{
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

@@ -1,0 +1,10 @@
+.WidgetTypesList{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.WidgetTypesList button{
+    margin-right: 20px;
+}

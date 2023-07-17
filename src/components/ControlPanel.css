@@ -1,0 +1,9 @@
+.ControlPanel{
+    width: 100%;
+    height: 50px;
+    background-color: var(--basicColor);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px 20px;
+}

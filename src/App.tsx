@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
+import ControlPanel from './components/ControlPanel';
+import WidgetKitPanel from './components/WidgetKitPanel';
+import WidgetSettingWeather from './components/widget_type/WidgetSettingWeather';
+import ModalBox from './components/ModalBox';
 import './App.css';
+import { useTypedSelector } from './hooks/useTypedSelector';
 
-function App() {
+const App = () => {
+
+  const {isModalBox} = useTypedSelector(state => state.widgetSettingsWeather)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ControlPanel />
+      <WidgetKitPanel />
+      {
+        isModalBox ?
+        <ModalBox>
+          <WidgetSettingWeather />
+        </ModalBox>
+        :
+          null
+      }
+      
     </div>
   );
 }

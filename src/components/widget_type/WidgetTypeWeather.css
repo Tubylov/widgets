@@ -1,0 +1,35 @@
+.WidgetTypeWeather{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    padding-right: 42px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+.WidgetTypeWeather__temperature{
+    width: 100%;
+    height: 70px;
+    line-height: 50px;
+    font-size: 36px;
+    font-weight: bold;
+}
+.WidgetTypeWeather__temperature svg{
+    width: 70px;
+    height: 70px;
+}
+.WidgetTypeWeather__city{
+    width: 100%;
+    height: auto;
+    line-height: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.WidgetTypeWeather__error{
+    width: 100%;
+    height: 100px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #e93f3f;
+}
