@@ -18,22 +18,22 @@ const WidgetColumn: React.FC<WidgetColumnProps> = ({number}) => {
 
     const currentWidget: Widget | null = useTypedSelector(state => state.widgetMove.widget)
 
-    function dragOverHandler(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void {
+    const dragOverHandler = (e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void => {
         e.preventDefault()
         if(e.currentTarget.className === 'WidgetColumn'){
             e.currentTarget.style.border = '3px solid #2ca58d'
         }
     }
 
-    function dragLeaveHandler(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void {
+    const dragLeaveHandler = (e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void => {
         e.currentTarget.style.border = 'none'
     }
 
-    function dragEndHandler(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void {
+    const dragEndHandler = (e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void => {
         e.currentTarget.style.border = 'none'
     }
 
-    function dropHandler(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void {
+    const dropHandler = (e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void => {
         e.preventDefault()
         e.currentTarget.style.border = 'none'
         if(currentWidget !== null){
@@ -46,11 +46,11 @@ const WidgetColumn: React.FC<WidgetColumnProps> = ({number}) => {
         <div 
             id={`column${number}`}
             className="WidgetColumn" 
-            onDrop={(e) => dropHandler(e)} 
-            onDragOver={(e) => dragOverHandler(e)}
-            onDragLeave={(e) => dragLeaveHandler(e)}
-            onDragEnd={(e) => dragEndHandler(e)}
-            onTouchEnd={(e) => dropHandler(e)}
+            onDrop={dropHandler} 
+            onDragOver={dragOverHandler}
+            onDragLeave={dragLeaveHandler}
+            onDragEnd={dragEndHandler}
+            onTouchEnd={dropHandler}
             >
             {
                 widgets.length > 0 ?

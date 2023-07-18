@@ -1,8 +1,3 @@
-/*
-class Widget - Общий класс-родиталь для виджетов с общим набором полей
-WidgetType - перечисление с типами виджетов
-WidgetName - перечисление с названиями виджетов
-*/
 export default class Widget {
     id: string;
     name: WidgetName;
@@ -25,3 +20,9 @@ export enum WidgetName {
     WEATHER = "Погода",
     GENERATOR = "Генератор"
 }
+
+/*
+class Widget - Общий класс-родиталь для виджетов с общим набором полей
+WidgetType - перечисление с типами виджетов
+WidgetName - перечисление с названиями виджетов
+*/

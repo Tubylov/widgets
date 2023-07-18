@@ -20,7 +20,7 @@ const WidgetItem: React.FC<WidgetProps> = ({widget}) => {
         [WidgetType.GENERATOR, <WidgetTypeGenerator widget={widget} />]
       ]);
 
-    function dragStartHandler(e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void {
+    const dragStartHandler = (e: React.DragEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>): void => {
         setCurrentWidget(widget)
     }
 
@@ -29,8 +29,8 @@ const WidgetItem: React.FC<WidgetProps> = ({widget}) => {
             id={widget.id}
             className="WidgetItem" 
             draggable
-            onDragStart={(e) => dragStartHandler(e)}
-            onTouchStart={(e) => dragStartHandler(e)}
+            onDragStart={dragStartHandler}
+            onTouchStart={dragStartHandler}
         >
             {widgets.get(widget.type)}
             <WidgetItemControls widget={widget} />
